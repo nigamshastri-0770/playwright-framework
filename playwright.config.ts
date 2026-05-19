@@ -1,9 +1,14 @@
 import { defineConfig } from '@playwright/test';
-import process from 'process';
 
 export default defineConfig({
 
   testDir: './tests',
+
+  retries: 0,
+
+  workers: 1,
+
+  fullyParallel: false,
 
   reporter: [
     ['html'],
@@ -14,12 +19,14 @@ export default defineConfig({
 
     browserName: 'chromium',
 
-    headless: !!process.env.CI,s
+    channel: 'chrome',
+
+    headless: !!process.env.CI,
 
     baseURL: 'https://demowebshop.tricentis.com/',
 
     screenshot: 'only-on-failure',
 
-    trace: 'retain-on-failure'
+    trace: 'off'
   }
 });
