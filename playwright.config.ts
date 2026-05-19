@@ -1,29 +1,25 @@
 import { defineConfig } from '@playwright/test';
+import process from 'process';
 
 export default defineConfig({
 
   testDir: './tests',
 
-  retries: 0,
-
-  workers: 1,
-
-  fullyParallel: false,
+  reporter: [
+    ['html'],
+    ['list']
+  ],
 
   use: {
 
     browserName: 'chromium',
 
-    channel: 'chrome',
-
-    headless: false,
+    headless: !!process.env.CI,s
 
     baseURL: 'https://demowebshop.tricentis.com/',
 
     screenshot: 'only-on-failure',
 
-    trace: 'off'
-
+    trace: 'retain-on-failure'
   }
-
 });
