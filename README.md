@@ -22,3 +22,5 @@ npx playwright test tests/login.spec.ts
 ## Show Report
 
 npx playwright show-report
+
+CI/CD test trigger
